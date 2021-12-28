@@ -15,3 +15,14 @@ nvim --headless +CocInstall coc-pyright coc-tsserver coc-eslint coc-prettier +qa
 nvim --headless +CocUpdate +qall
 
 #============== END VIM SETUP =======================
+
+
+#============== TMUX SETUP ==========================
+
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+$LINK_CMD $CWD/.tmux.conf ~/.tmux.conf
+$LINK_CMD $CWD/.tmux ~/.tmux
+~/.tmux/plugins/tpm/scripts/install_plugins.sh
+
+#============== END TMUX SETUP ======================
+
