@@ -1,0 +1,17 @@
+#!/bin/bash
+
+LINK_CMD="ln -sfn"
+CWD=$(pwd)
+
+
+#============== VIM SETUP ==========================
+
+$LINK_CMD $CWD/.vimrc ~/.vimrc
+$LINK_CMD $CWD/.vim ~/.vim
+$LINK_CMD $CWD/.config/nvim ~/.config/nvim
+
+nvim --headless +PlugInstall +qall
+nvim --headless +CocInstall coc-pyright coc-tsserver coc-eslint coc-prettier +qall
+nvim --headless +CocUpdate +qall
+
+#============== END VIM SETUP =======================
