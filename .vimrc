@@ -121,6 +121,7 @@ noremap <Leader>s :w<CR>
 noremap <Leader>q :q! <CR>
 noremap <CR> :noh<CR><CR>
 noremap <C-s> :%s/
+noremap <Leader>w <C-w>
 noremap <Leader>vr :Qargs<CR> :argdo %s/
 noremap <Leader>vu :argdo update<CR>
 noremap <Leader>gs :belowright :vertical Git <CR>
