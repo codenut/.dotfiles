@@ -16,6 +16,7 @@ done
 cd $ZPREZTODIR
 git clone --recurse-submodules https://github.com/belak/prezto-contrib contrib
 
+sh -c "$(curl -fsSL https://starship.rs/install.sh)"
 $LINK_CMD $CWD/.zshrc ~/.zshrc
 #============== END ZSH SETUP ==========================
 
