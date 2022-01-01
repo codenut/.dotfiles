@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 LINK_CMD="ln -sfn"
 CWD=$(pwd)
