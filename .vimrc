@@ -55,7 +55,7 @@ Plug 'tpope/vim-endwise'
 Plug 'Raimondi/delimitMate'
 Plug 'Valloric/MatchTagAlways'
 Plug 'tpope/vim-commentary'
-Plug 'morhetz/gruvbox'
+Plug 'ghifarit53/tokyonight-vim'
 
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 Plug 'tpope/vim-rails', { 'for': ['ruby', 'erb'] }
@@ -87,12 +87,13 @@ Plug 'kyazdani42/nvim-web-devicons' " for file icons
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'romgrk/barbar.nvim'
 Plug 'nvim-lualine/lualine.nvim'
+Plug 'sheerun/vim-polyglot'
 call plug#end()
 
 runtime! macros/matchit.vim
 
 syntax on
-colorscheme gruvbox
+colorscheme tokyonight
 
 set complete=.,w,b,u,t,i
 let mapleader=","
