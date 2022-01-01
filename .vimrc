@@ -30,6 +30,7 @@ set pastetoggle=<F3>
 set statusline+=%#warningmsg#
 set statusline+=%*
 set statusline^=%{coc#status()} 
+set termguicolors
 
 set autoindent
 set ruler
@@ -85,7 +86,7 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'kyazdani42/nvim-web-devicons' " for file icons
 Plug 'kyazdani42/nvim-tree.lua'
-Plug 'romgrk/barbar.nvim'
+Plug 'akinsho/bufferline.nvim'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'sheerun/vim-polyglot'
 call plug#end()
@@ -145,6 +146,7 @@ require'lualine'.setup {
         component_separators = { left = '', right = ''}
     }
 }
+require("bufferline").setup{}
 local nvim_lsp = require "lspconfig"
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
