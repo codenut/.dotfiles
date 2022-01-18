@@ -88,7 +88,6 @@ Plug 'kyazdani42/nvim-tree.lua'
 Plug 'akinsho/bufferline.nvim'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'sheerun/vim-polyglot'
-Plug 'petobens/poet-v'
 call plug#end()
 
 runtime! macros/matchit.vim
