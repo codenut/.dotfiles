@@ -1,4 +1,3 @@
-
 ZSH_DISABLE_COMPFIX=true
 
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
@@ -21,3 +20,6 @@ export PATH=/opt/homebrew/bin:/Users/michael/Library/Python/3.8/bin:/opt/homebre
 alias ydla="youtube-dl -x --audio-format mp3 --audio-quality 0 "
 
 eval "$(starship init zsh)"
+
+export VISUAL=vim
+export EDITOR="$VISUAL"
