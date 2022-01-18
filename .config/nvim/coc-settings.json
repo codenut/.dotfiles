@@ -1,7 +1,7 @@
 {
   "suggest.echodocSupport": true,
   "suggest.maxCompleteItemCount": 20,
-  "coc.preferences.formatOnSaveFiletypes": ["json", "python", "c", "cpp"],
+  "coc.preferences.formatOnSaveFiletypes": ["json", "python"],
 
   "eslint.autoFixOnSave": true,
   "eslint.filetypes": [
