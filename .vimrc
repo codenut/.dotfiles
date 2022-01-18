@@ -54,7 +54,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-endwise'
 Plug 'Raimondi/delimitMate'
-Plug 'Valloric/MatchTagAlways'
 Plug 'tpope/vim-commentary'
 Plug 'ghifarit53/tokyonight-vim'
 
@@ -179,3 +178,5 @@ function! PYSET()
   let g:pymode_folding=0
   let g:pymode_lint_checkers = ['...', '...']
 endfunction
+
+autocmd BufWritePre *.py silent! :call CocAction('runCommand', 'pyright.organizeimports')
