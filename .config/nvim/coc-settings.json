@@ -1,21 +1,7 @@
 {
-  "python.formatting.provider": "yapf",
-  "python.jediEnabled": false,
-
   "suggest.echodocSupport": true,
   "suggest.maxCompleteItemCount": 20,
-  "coc.preferences.formatOnSaveFiletypes": [
-    "javascript",
-    "typescript",
-    "typescriptreact",
-    "json",
-    "javascriptreact",
-    "typescript.tsx",
-    "json",
-    "python",
-    "c",
-    "cpp"
-  ],
+  "coc.preferences.formatOnSaveFiletypes": ["json", "python", "c", "cpp"],
 
   "eslint.autoFixOnSave": true,
   "eslint.filetypes": [
@@ -25,27 +11,8 @@
     "javascriptreact",
     "typescript.tsx"
   ],
-  "languageserver": {
-    "kotlinLanguageServer": {
-      "command": "/usr/share/kotlin/kotlin-language-server/bin/kotlin-language-server",
-      "filetypes": ["kotlin"],
-      "rootPatterns": [".kt", ".kts"],
-      "additionalSchemes": ["jar", "zipfile"]
-    },
-    "ccls": {
-      "command": "ccls",
-      "filetypes": ["c", "cpp", "objc", "objcpp"],
-      "rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/"],
-      "initializationOptions": {
-        "cache": {
-          "directory": "/tmp/ccls"
-        }
-      }
-    }
-  },
   "tsserver.enableJavascript": true,
   "prettier.trailingComma": "none",
-  "prettier.arrowParens": "avoid",
-  "typescript.suggest.autoImports": true,
-  "eslint.autoFixOnSave": true
+  "prettier.eslintIntegration": true,
+  "python.formatting.provider": "black",
 }
