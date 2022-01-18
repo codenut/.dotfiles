@@ -29,7 +29,7 @@ set guioptions-=L
 set pastetoggle=<F3>
 set statusline+=%#warningmsg#
 set statusline+=%*
-set statusline^=%{coc#status()} 
+set statusline^=%{coc#status()}
 set termguicolors
 
 set autoindent
@@ -89,6 +89,7 @@ Plug 'kyazdani42/nvim-tree.lua'
 Plug 'akinsho/bufferline.nvim'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'sheerun/vim-polyglot'
+Plug 'petobens/poet-v'
 call plug#end()
 
 runtime! macros/matchit.vim
@@ -111,7 +112,7 @@ noremap <C-l> :bnext<CR>
 noremap <C-c> :silent! bp<bar>sp<bar>bn<bar>bd<CR>
 noremap <C-a> ggVG<CR>
 noremap <Leader>c :Commits<CR>
-noremap <Leader>p :Buffer 
+noremap <Leader>p :Buffer
 noremap <Leader>vs :vsplit<CR>
 noremap <Leader>df :windo diffthis<CR>
 noremap <Leader>ds :windo diffoff<CR>
@@ -140,12 +141,12 @@ autocmd FileType python call PYSET()
 lua << EOF
 require'nvim-tree'.setup()
 require'lualine'.setup {
-    options = {
-        theme = 'gruvbox',
-        section_separators = { left = '', right = ''},
-        component_separators = { left = '', right = ''}
+  options = {
+    theme = 'gruvbox',
+    section_separators = { left = '', right = ''},
+    component_separators = { left = '', right = ''}
     }
-}
+  }
 require("bufferline").setup{}
 local nvim_lsp = require "lspconfig"
 local capabilities = vim.lsp.protocol.make_client_capabilities()
