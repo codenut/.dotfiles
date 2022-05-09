@@ -155,6 +155,7 @@ noremap <C-p> :Telescope find_files<cr>
 noremap <Leader>ff :Telescope live_grep<cr>
 noremap <Leader>fg :Telescope live_grep<cr>
 noremap <Leader>fc :lua require('telescope.builtin').git_commits()<cr>
+noremap <Leader>ft :lua require('telescope.builtin').git_stash()<cr>
 noremap <Leader>fs :lua require('telescope.builtin').lsp_workspace_symbols()<cr>
 
 noremap <Leader>bb :lua require('telescope.builtin').buffers()<cr>
