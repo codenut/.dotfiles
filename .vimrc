@@ -180,3 +180,11 @@ function! PYSET()
 endfunction
 
 autocmd BufWritePre *.py silent! :call CocAction('runCommand', 'pyright.organizeimports')
+
+if has("autocmd")
+  augroup templates
+    autocmd BufNewFile *.cp.py 0r ~/.vim/templates/skeleton.cp.py
+    autocmd BufNewFile *.cp.cpp 0r ~/.vim/templates/skeleton.cp.cpp
+  augroup END
+endif
+
