@@ -69,6 +69,7 @@ Plug 'mxw/vim-jsx', { 'for': ['html', 'javascript', 'css'] }
 Plug 'mattn/emmet-vim', { 'for': ['html', 'javascript', 'css'] }
 Plug 'heavenshell/vim-jsdoc'
 Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'ruanyl/vim-sort-imports'
 
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
@@ -127,7 +128,7 @@ noremap <Leader>vr :Qargs<CR> :argdo %s/
 noremap <Leader>vu :argdo update<CR>
 noremap <Leader>gs :belowright :vertical Git <CR>
 noremap <Leader>gc :Git commit <CR>
-noremap <Leader>e :edit<CR>
+noremap <Leader>d :edit<CR>
 noremap <Leader>sc :setlocal spell<CR>
 
 noremap <Leader>q :q! <CR>
@@ -167,6 +168,10 @@ noremap <Leader>di :lua require('telescope.builtin').lsp_implementations()<cr>
 noremap <Leader>dd :lua require('telescope.builtin').lsp_definitions()<cr>
 noremap <Leader>dt :lua require('telescope.builtin').lsp_type_definitions()<cr>
 
+nmap <silent> [e <Plug>(coc-diagnostic-prev)
+nmap <silent> ]e <Plug>(coc-diagnostic-next)
+nmap <Leader>e :CocDiagnostics<CR>
+
 function! PYSET()
   let $PYTHONUNBUFFERED=1
   let g:pymode_python = 'python3'
@@ -181,6 +186,7 @@ function! PYSET()
 endfunction
 
 autocmd BufWritePre *.py silent! :call CocAction('runCommand', 'pyright.organizeimports')
+let g:import_sort_auto = 1
 
 if has("autocmd")
   augroup templates
@@ -188,4 +194,5 @@ if has("autocmd")
     autocmd BufNewFile *.cp.cpp 0r ~/.vim/templates/skeleton.cp.cpp
   augroup END
 endif
+
 

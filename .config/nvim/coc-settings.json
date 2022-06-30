@@ -1,7 +1,7 @@
 {
   "suggest.echodocSupport": true,
   "suggest.maxCompleteItemCount": 20,
-  "coc.preferences.formatOnSaveFiletypes": ["json", "python", "javascript", "javascriptreact"],
+  "coc.preferences.formatOnSaveFiletypes": ["json", "python", "javascript", "javascriptreact", "typescript", "typescript.tsx", "typescriptreact"],
 
   "eslint.autoFixOnSave": true,
   "eslint.filetypes": [
@@ -12,8 +12,11 @@
     "typescript.tsx"
   ],
   "tsserver.enableJavascript": true,
-  "prettier.trailingComma": "none",
+  "prettier.tabWidth": 4,
+  "prettier.singleQuote": true,
   "prettier.eslintIntegration": true,
+  "prettier.trailingComma": "all",
+  "prettier.printWidth": 120,
   "python.formatting.provider": "black",
   "languageserver": {
         "ccls": {
