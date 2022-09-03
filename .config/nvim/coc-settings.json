@@ -1,44 +1,24 @@
 {
-  "suggest.echodocSupport": true,
-  "suggest.maxCompleteItemCount": 20,
-  "coc.preferences.formatOnSaveFiletypes": ["json", "python", "javascript", "javascriptreact", "typescript", "typescript.tsx", "typescriptreact"],
-
-  "eslint.autoFixOnSave": true,
-  "eslint.filetypes": [
-    "javascript",
-    "typescript",
-    "typescriptreact",
-    "javascriptreact",
-    "typescript.tsx"
-  ],
-  "tsserver.enableJavascript": true,
-  "prettier.tabWidth": 4,
-  "prettier.singleQuote": true,
-  "prettier.eslintIntegration": true,
-  "prettier.trailingComma": "all",
-  "prettier.printWidth": 120,
-  "python.formatting.provider": "black",
-  "languageserver": {
+    "diagnostic.enable": false,
+    "suggest.echodocSupport": true,
+    "suggest.maxCompleteItemCount": 20,
+    "coc.preferences.formatOnSaveFiletypes": ["json", "python"],
+    "eslint.quiet": true,
+    "eslint.autoFixOnSave": true,
+    "eslint.filetypes": ["json", "javascript", "typescript", "typescriptreact", "javascriptreact", "typescript.tsx"],
+    "tsserver.enableJavascript": true,
+    "python.formatting.provider": "black",
+    "languageserver": {
         "ccls": {
             "command": "ccls",
-            "filetypes": [
-                "c",
-                "cpp",
-                "objc",
-                "objcpp"
-            ],
-            "rootPatterns": [
-                ".ccls",
-                "compile_commands.json",
-                ".vim/",
-                ".git/",
-                ".hg/"
-            ],
+            "filetypes": ["c", "cpp", "objc", "objcpp"],
+            "rootPatterns": [".ccls", "compile_commands.json", ".vim/", ".git/", ".hg/"],
             "initializationOptions": {
                 "cache": {
                     "directory": "/tmp/ccls"
                 }
             }
         }
-    }
+    },
+    "coc.preferences.rootPatterns": [".git", ".hg", ".projections.json", "package.json"]
 }

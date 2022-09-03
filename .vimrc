@@ -2,9 +2,6 @@ set nocompatible
 filetype off
 filetype plugin indent on
 
-inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-TAB>"
-
 set nonumber
 set guicursor=
 set signcolumn=yes
@@ -83,6 +80,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'williamboman/nvim-lsp-installer'
 Plug 'neovim/nvim-lspconfig'
 Plug 'kyazdani42/nvim-web-devicons' " for file icons
 Plug 'kyazdani42/nvim-tree.lua'
@@ -138,6 +136,9 @@ noremap ga <Plug>(EasyAlign)
 autocmd FileType python call PYSET()
 
 lua << EOF
+require("nvim-lsp-installer").setup {}
+
+require('telescope').setup()
 require'nvim-tree'.setup()
 require'lualine'.setup {
   options = {
@@ -147,14 +148,24 @@ require'lualine'.setup {
     }
   }
 require("bufferline").setup{}
+require'lspconfig'.tsserver.setup{}
+
 local nvim_lsp = require "lspconfig"
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+vim.api.nvim_set_keymap('n', ']e', '<cmd>lua vim.diagnostic.goto_next()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '[e', '<cmd>lua vim.diagnostic.goto_prev()<CR>', { noremap = true, silent = true })
+
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+    vim.lsp.diagnostic.on_publish_diagnostics, {
+        virtual_text = false
+    }
+)
 EOF
 
 noremap <C-p> :Telescope find_files<cr>
 noremap <Leader>ff :Telescope live_grep<cr>
-noremap <Leader>fg :Telescope live_grep<cr>
 noremap <Leader>fc :lua require('telescope.builtin').git_commits()<cr>
 noremap <Leader>ft :lua require('telescope.builtin').git_stash()<cr>
 noremap <Leader>fs :lua require('telescope.builtin').lsp_workspace_symbols()<cr>
@@ -168,8 +179,6 @@ noremap <Leader>di :lua require('telescope.builtin').lsp_implementations()<cr>
 noremap <Leader>dd :lua require('telescope.builtin').lsp_definitions()<cr>
 noremap <Leader>dt :lua require('telescope.builtin').lsp_type_definitions()<cr>
 
-nmap <silent> [e <Plug>(coc-diagnostic-prev)
-nmap <silent> ]e <Plug>(coc-diagnostic-next)
 nmap <Leader>e :CocDiagnostics<CR>
 
 function! PYSET()
@@ -186,7 +195,7 @@ function! PYSET()
 endfunction
 
 autocmd BufWritePre *.py silent! :call CocAction('runCommand', 'pyright.organizeimports')
-let g:import_sort_auto = 1
+let g:import_sort_auto = 0
 
 if has("autocmd")
   augroup templates
@@ -195,4 +204,15 @@ if has("autocmd")
   augroup END
 endif
 
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+inoremap <silent><expr> <C-x><C-z> coc#pum#visible() ? coc#pum#stop() : "\<C-x>\<C-z>"
+" remap for complete to use tab and <cr>
+inoremap <silent><expr> <TAB>
+        \ coc#pum#visible() ? coc#pum#next(1):
+        \ <SID>check_back_space() ? "\<Tab>" :
+        \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+inoremap <silent><expr> <c-space> coc#refresh()
 
+hi CocSearch ctermfg=12 guifg=#18A3FF
+hi CocMenuSel ctermbg=109 guibg=#13354A
