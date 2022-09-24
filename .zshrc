@@ -21,5 +21,12 @@ alias ydla="youtube-dl -x --audio-format mp3 --audio-quality 0 "
 
 eval "$(starship init zsh)"
 
-export VISUAL=vim
+export VISUAL=nvim
 export EDITOR="$VISUAL"
+
+export PYENV_ROOT="$HOME/.pyenv" 
+export PATH="$PYENV_ROOT/bin:$PATH" 
+eval "$(pyenv init --path)" 
+eval "$(pyenv init -)"
+
+alias gcj_java="/usr/local/Cellar/openjdk/18/libexec/openjdk.jdk/Contents/Home/bin/java -Xms896m -Xmx896m -Xss64m -XX:+UseSerialGC"
