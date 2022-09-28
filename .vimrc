@@ -87,6 +87,8 @@ Plug 'kyazdani42/nvim-tree.lua'
 Plug 'akinsho/bufferline.nvim'
 Plug 'nvim-lualine/lualine.nvim'
 Plug 'sheerun/vim-polyglot'
+
+Plug 'folke/trouble.nvim'
 call plug#end()
 
 runtime! macros/matchit.vim
@@ -149,6 +151,7 @@ require'lualine'.setup {
   }
 require("bufferline").setup{}
 require'lspconfig'.tsserver.setup{}
+require("trouble").setup {}
 
 local nvim_lsp = require "lspconfig"
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -179,7 +182,7 @@ noremap <Leader>di :lua require('telescope.builtin').lsp_implementations()<cr>
 noremap <Leader>dd :lua require('telescope.builtin').lsp_definitions()<cr>
 noremap <Leader>dt :lua require('telescope.builtin').lsp_type_definitions()<cr>
 
-nmap <Leader>e :CocDiagnostics<CR>
+nmap <Leader>e :TroubleToggle<CR>
 
 function! PYSET()
   let $PYTHONUNBUFFERED=1
