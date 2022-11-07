@@ -4,7 +4,6 @@ require('telescope').setup()
 require'nvim-tree'.setup()
 require'lualine'.setup {
     options = {
-        theme = 'tokyonight-moon',
         section_separators = {left = '', right = ''},
         component_separators = {left = '', right = ''}
     }
