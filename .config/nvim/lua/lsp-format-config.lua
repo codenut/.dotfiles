@@ -16,7 +16,6 @@ require("lspconfig").efm.setup {
             python = {
                 {formatCommand = [[black --quiet -]], formatStdin = true},
                 {formatCommand = [[isort --quiet -]], formatStdin = true}
-
             },
             lua = {{formatCommand = 'lua-format -i', formatStdin = true}},
             typescript = {prettier},
@@ -25,3 +24,16 @@ require("lspconfig").efm.setup {
     }
 }
 
+--[[
+lsp,formatters:
+lua-language-server
+vim-language-server
+black
+efm
+eslint_d
+isort
+luaformatter
+prettier
+pyright
+typescript-language-server
+]]

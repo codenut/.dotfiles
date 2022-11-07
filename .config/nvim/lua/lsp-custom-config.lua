@@ -1,5 +1,8 @@
 require("mason").setup()
-require("mason-lspconfig").setup()
+require("mason-lspconfig").setup({
+    ensure_installed = {"sumneko_lua", "efm"},
+    automatic_installation = true
+})
 
 local lsp = require "lspconfig"
 
@@ -17,4 +20,3 @@ vim.api.nvim_set_keymap('n', ']e', '<cmd>lua vim.diagnostic.goto_next()<CR>',
                         {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '[e', '<cmd>lua vim.diagnostic.goto_prev()<CR>',
                         {noremap = true, silent = true})
-
