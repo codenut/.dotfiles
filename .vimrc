@@ -26,7 +26,6 @@ set guioptions-=L
 set pastetoggle=<F3>
 set statusline+=%#warningmsg#
 set statusline+=%*
-set statusline^=%{coc#status()}
 set termguicolors
 
 set autoindent
@@ -57,17 +56,6 @@ Plug 'ghifarit53/tokyonight-vim'
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 Plug 'tpope/vim-rails', { 'for': ['ruby', 'erb'] }
 
-Plug 'isRuslan/vim-es6', { 'for': ['html', 'javascript', 'css'] }
-Plug 'pangloss/vim-javascript', { 'for': ['html', 'javascript', 'css'] }
-Plug 'jelera/vim-javascript-syntax', { 'for': ['html', 'javascript', 'css'] }
-Plug 'othree/html5.vim', { 'for': ['html', 'javascript', 'css'] }
-Plug 'ap/vim-css-color', { 'for': ['html', 'javascript', 'css'] }
-Plug 'mxw/vim-jsx', { 'for': ['html', 'javascript', 'css'] }
-Plug 'mattn/emmet-vim', { 'for': ['html', 'javascript', 'css'] }
-Plug 'heavenshell/vim-jsdoc'
-Plug 'othree/javascript-libraries-syntax.vim'
-Plug 'ruanyl/vim-sort-imports'
-
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
 Plug 'mhinz/vim-signify'
@@ -76,12 +64,15 @@ Plug 'rhysd/git-messenger.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'jparise/vim-graphql'
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'williamboman/nvim-lsp-installer'
+
+Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'neovim/nvim-lspconfig'
+Plug 'ms-jpq/coq_nvim'
+Plug 'lukas-reineke/lsp-format.nvim'
+
 Plug 'kyazdani42/nvim-web-devicons' " for file icons
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'akinsho/bufferline.nvim'
@@ -135,10 +126,7 @@ noremap <Leader>q :q! <CR>
 noremap <Leader>sq :wq! <CR>
 noremap ga <Plug>(EasyAlign)
 
-autocmd FileType python call PYSET()
-
 lua << EOF
-require("nvim-lsp-installer").setup {}
 
 require('telescope').setup()
 require'nvim-tree'.setup()
@@ -147,24 +135,35 @@ require'lualine'.setup {
     theme = 'gruvbox',
     section_separators = { left = '', right = ''},
     component_separators = { left = '', right = ''}
-    }
   }
+}
 require("bufferline").setup{}
-require'lspconfig'.tsserver.setup{}
-require("trouble").setup {}
 
-local nvim_lsp = require "lspconfig"
+require("mason").setup()
+require("mason-lspconfig").setup()
+
+require("trouble").setup()
+
+local lsp = require "lspconfig"
+
+vim.g.coq_settings = {
+  keymap = {
+    pre_select = true,
+  },
+  auto_start = true,
+}
+
+local coq = require "coq" -- add this
+
+lsp.pyright.setup(coq.lsp_ensure_capabilities{})
+lsp.tsserver.setup(coq.lsp_ensure_capabilities{})
+
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 vim.api.nvim_set_keymap('n', ']e', '<cmd>lua vim.diagnostic.goto_next()<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '[e', '<cmd>lua vim.diagnostic.goto_prev()<CR>', { noremap = true, silent = true })
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-    vim.lsp.diagnostic.on_publish_diagnostics, {
-        virtual_text = false
-    }
-)
 EOF
 
 noremap <C-p> :Telescope find_files<cr>
@@ -184,22 +183,6 @@ noremap <Leader>dt :lua require('telescope.builtin').lsp_type_definitions()<cr>
 
 nmap <Leader>e :TroubleToggle<CR>
 
-function! PYSET()
-  let $PYTHONUNBUFFERED=1
-  let g:pymode_python = 'python3'
-  let g:formatters_python = ['yapf']
-
-  set tw=0
-  setlocal ai sw=4 sts=4 et
-  set nowrap
-
-  let g:pymode_folding=0
-  let g:pymode_lint_checkers = ['...', '...']
-endfunction
-
-autocmd BufWritePre *.py silent! :call CocAction('runCommand', 'pyright.organizeimports')
-let g:import_sort_auto = 0
-
 if has("autocmd")
   augroup templates
     autocmd BufNewFile *.cp.py 0r ~/.vim/templates/skeleton.cp.py
@@ -207,21 +190,9 @@ if has("autocmd")
   augroup END
 endif
 
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-inoremap <silent><expr> <C-x><C-z> coc#pum#visible() ? coc#pum#stop() : "\<C-x>\<C-z>"
-
 function! s:check_back_space() abort
 	let col = col('.') - 1
 	return !col || getline('.')[col - 1] =~ '\s'
 endfunction
 
-" remap for complete to use tab and <cr>
-inoremap <silent><expr> <TAB>
-        \ coc#pum#visible() ? coc#pum#next(1):
-        \ <SID>check_back_space() ? "\<Tab>" :
-        \ coc#refresh()
-inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-inoremap <silent><expr> <c-space> coc#refresh()
-
-hi CocSearch ctermfg=12 guifg=#18A3FF
-hi CocMenuSel ctermbg=109 guibg=#13354A
+let g:format_debug = v:true
