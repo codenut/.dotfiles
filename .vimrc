@@ -49,43 +49,15 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-endwise'
-Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-commentary'
-Plug 'ghifarit53/tokyonight-vim'
-
-Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
-Plug 'tpope/vim-rails', { 'for': ['ruby', 'erb'] }
-
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
 Plug 'mhinz/vim-signify'
 Plug 'rhysd/git-messenger.vim'
 
-Plug 'junegunn/vim-easy-align'
-Plug 'jparise/vim-graphql'
-
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-
-Plug 'williamboman/mason.nvim'
-Plug 'williamboman/mason-lspconfig.nvim'
-Plug 'neovim/nvim-lspconfig'
-Plug 'ms-jpq/coq_nvim'
-Plug 'lukas-reineke/lsp-format.nvim'
-
-Plug 'kyazdani42/nvim-web-devicons' " for file icons
-Plug 'kyazdani42/nvim-tree.lua'
-Plug 'akinsho/bufferline.nvim'
-Plug 'nvim-lualine/lualine.nvim'
-Plug 'sheerun/vim-polyglot'
-
-Plug 'folke/trouble.nvim'
 call plug#end()
 
-runtime! macros/matchit.vim
-
 syntax on
-colorscheme tokyonight
 
 set complete=.,w,b,u,t,i
 let mapleader=","
@@ -127,59 +99,8 @@ noremap <Leader>sq :wq! <CR>
 noremap ga <Plug>(EasyAlign)
 
 lua << EOF
-
-require('telescope').setup()
-require'nvim-tree'.setup()
-require'lualine'.setup {
-  options = {
-    theme = 'gruvbox',
-    section_separators = { left = '', right = ''},
-    component_separators = { left = '', right = ''}
-  }
-}
-require("bufferline").setup{}
-
-require("mason").setup()
-require("mason-lspconfig").setup()
-
-require("trouble").setup()
-
-local lsp = require "lspconfig"
-
-vim.g.coq_settings = {
-  keymap = {
-    pre_select = true,
-  },
-  auto_start = true,
-}
-
-local coq = require "coq" -- add this
-
-lsp.pyright.setup(coq.lsp_ensure_capabilities{})
-lsp.tsserver.setup(coq.lsp_ensure_capabilities{})
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-vim.api.nvim_set_keymap('n', ']e', '<cmd>lua vim.diagnostic.goto_next()<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '[e', '<cmd>lua vim.diagnostic.goto_prev()<CR>', { noremap = true, silent = true })
-
+require('init')
 EOF
-
-noremap <C-p> :Telescope find_files<cr>
-noremap <Leader>ff :Telescope live_grep<cr>
-noremap <Leader>fc :lua require('telescope.builtin').git_commits()<cr>
-noremap <Leader>ft :lua require('telescope.builtin').git_stash()<cr>
-noremap <Leader>fs :lua require('telescope.builtin').lsp_workspace_symbols()<cr>
-
-noremap <Leader>bb :lua require('telescope.builtin').buffers()<cr>
-noremap <Leader>bc :lua require('telescope.builtin').git_bcommits()<cr>
-noremap <Leader>bs :lua require('telescope.builtin').lsp_document_symbols()<cr>
-
-noremap <Leader>dr :lua require('telescope.builtin').lsp_references()<cr>
-noremap <Leader>di :lua require('telescope.builtin').lsp_implementations()<cr>
-noremap <Leader>dd :lua require('telescope.builtin').lsp_definitions()<cr>
-noremap <Leader>dt :lua require('telescope.builtin').lsp_type_definitions()<cr>
 
 nmap <Leader>e :TroubleToggle<CR>
 
@@ -190,9 +111,4 @@ if has("autocmd")
   augroup END
 endif
 
-function! s:check_back_space() abort
-	let col = col('.') - 1
-	return !col || getline('.')[col - 1] =~ '\s'
-endfunction
-
-let g:format_debug = v:true
+colorscheme tokyonight-moon
