@@ -1,5 +1,5 @@
 require("lsp-format").setup {
-    typescript = {tab_width = function() return vim.opt.shiftwidth:get() end},
+    typescript = {tab_width = 4},
     yaml = {tab_width = 2}
 }
 
@@ -19,6 +19,7 @@ require("lspconfig").efm.setup {
             },
             lua = {{formatCommand = 'lua-format -i', formatStdin = true}},
             typescript = {prettier},
+            typescriptreact = {prettier},
             yaml = {prettier}
         }
     }
@@ -37,3 +38,4 @@ prettier
 pyright
 typescript-language-server
 ]]
+
