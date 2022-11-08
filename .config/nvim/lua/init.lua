@@ -11,8 +11,8 @@ require'lualine'.setup {
 require("bufferline").setup {}
 require("trouble").setup()
 
-require("lsp-custom-config")
-require("lsp-format-config")
+require("lsp/config")
+require("lsp/format")
 
 local builtin = require('telescope.builtin')
 
