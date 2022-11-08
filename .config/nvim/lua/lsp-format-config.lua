@@ -4,7 +4,7 @@ require("lsp-format").setup {
 }
 
 local prettier = {
-    formatCommand = [[prettier --stdin-filepath ${INPUT} ${--tab-width:tab_width}]],
+    formatCommand = [[prettier --config ~/.dotfiles/.config/npm/.prettierrc.json --stdin-filepath ${INPUT} ${--tab-width:tab_width}]],
     formatStdin = true
 }
 

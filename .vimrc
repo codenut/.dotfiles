@@ -61,8 +61,22 @@ syntax on
 
 set complete=.,w,b,u,t,i
 let mapleader=","
-let vim_markdown_preview_hotkey='<C-m>'
 let g:asyncrun_open = 30
+
+lua << EOF
+require('init')
+EOF
+
+nmap <Leader>e :TroubleToggle<CR>
+
+if has("autocmd")
+  augroup templates
+    autocmd BufNewFile *.cp.py 0r ~/.vim/templates/skeleton.cp.py
+    autocmd BufNewFile *.cp.cpp 0r ~/.vim/templates/skeleton.cp.cpp
+  augroup END
+endif
+
+colorscheme tokyonight-moon
 
 noremap <C-\> :NvimTreeToggle<CR>
 noremap <leader>nf :NvimTreeFindFile<cr>
@@ -79,8 +93,6 @@ noremap <Leader>vs :vsplit<CR>
 noremap <Leader>df :windo diffthis<CR>
 noremap <Leader>ds :windo diffoff<CR>
 
-noremap <F7> :TagbarToggle<CR>
-noremap <F8> :Scratch<CR>
 noremap <Leader>pi :w<CR> :so %<CR>:PlugInstall<CR>
 noremap <Leader>s :w<CR>
 noremap <Leader>q :q! <CR>
@@ -96,19 +108,3 @@ noremap <Leader>sc :setlocal spell<CR>
 
 noremap <Leader>q :q! <CR>
 noremap <Leader>sq :wq! <CR>
-noremap ga <Plug>(EasyAlign)
-
-lua << EOF
-require('init')
-EOF
-
-nmap <Leader>e :TroubleToggle<CR>
-
-if has("autocmd")
-  augroup templates
-    autocmd BufNewFile *.cp.py 0r ~/.vim/templates/skeleton.cp.py
-    autocmd BufNewFile *.cp.cpp 0r ~/.vim/templates/skeleton.cp.cpp
-  augroup END
-endif
-
-colorscheme tokyonight-moon
