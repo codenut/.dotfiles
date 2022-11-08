@@ -20,6 +20,7 @@ require("lspconfig").efm.setup {
             lua = {{formatCommand = 'lua-format -i', formatStdin = true}},
             typescript = {prettier},
             typescriptreact = {prettier},
+            javascript = {prettier},
             yaml = {prettier}
         }
     }
