@@ -1,6 +1,7 @@
 vim.keymap.set('n', '<leader>gt', ":Git ", {})
 vim.keymap.set('n', '<leader>gp', ":Git push ", {})
 vim.keymap.set('n', '<leader>grb', ":Git rebase -i HEAD~2", {})
+vim.keymap.set('n', '<leader>lg', ":LazyGit<CR>", {})
 
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<C-p>', builtin.find_files, {})
