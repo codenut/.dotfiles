@@ -2,3 +2,4 @@
 .vim/sessions
 .tmux/plugins
 .config/nvim/plugin
+.tmux/resurrect
