@@ -83,8 +83,6 @@ noremap <leader>nf :NvimTreeFindFile<cr>
 noremap <F6> :%s#\(\<\u\l\+\|\l\+\)\(\u\)#\l\1_\l\2#g<CR>
 
 noremap ; :
-noremap <C-h> :bprev<CR>
-noremap <C-l> :bnext<CR>
 noremap <C-c> :silent! bp<bar>sp<bar>bn<bar>bd<CR>
 noremap <C-a> ggVG<CR>
 noremap <Leader>c :Commits<CR>
@@ -108,3 +106,11 @@ noremap <Leader>sc :setlocal spell<CR>
 
 noremap <Leader>q :q! <CR>
 noremap <Leader>sq :wq! <CR>
+
+function! RemapBuffNavigation()
+    nunmap <C-h>
+    noremap <C-h> :bprev<CR>
+    noremap <C-l> :bnext<CR>
+endfunction
+
+autocmd BufAdd * call RemapBuffNavigation()
