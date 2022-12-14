@@ -47,8 +47,9 @@ alias ydlv="youtube-dl -f 'bestvideo[height<=720]+bestaudio/best[height<=720]' "
 alias olym="/Users/mvalladolid/Library/Mobile Documents/com~apple~CloudDocs/olympiad"
 
 
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
 alias iclouddrive='/Users/mvalladolid/Library/Mobile Documents/com~apple~CloudDocs'
 
+
+ export NVM_DIR="$HOME/.nvm"
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
