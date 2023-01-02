@@ -38,6 +38,9 @@ return require('packer').startup(function(use)
     use 'kyazdani42/nvim-web-devicons'
 
     use 'kdheepak/lazygit.nvim'
+    use 'tpope/vim-surround'
+    use 'tpope/vim-endwise'
+    use 'Raimondi/delimitMate'
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
