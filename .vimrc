@@ -76,7 +76,7 @@ if has("autocmd")
   augroup END
 endif
 
-colorscheme tokyonight-day
+colorscheme tokyonight-moon
 
 noremap <C-\> :NvimTreeToggle<CR>
 noremap <leader>nf :NvimTreeFindFile<cr>
