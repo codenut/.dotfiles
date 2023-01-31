@@ -3,6 +3,8 @@
 LINK_CMD=(ln -sfn)
 CWD=$(pwd)
 
+brew install tmux neovim pyenv lua
+
 #============== ZSH SETUP =============================
 
 chsh -s /bin/zsh
@@ -27,9 +29,9 @@ $LINK_CMD $CWD/.vimrc ~/.vimrc
 $LINK_CMD $CWD/.vim ~/.vim
 $LINK_CMD $CWD/.config/nvim ~/.config/nvim
 
-nvim --headless +PlugInstall +qall
-nvim --headless +CocInstall coc-pyright coc-tsserver coc-eslint coc-prettier +qall
-nvim --headless +CocUpdate +qall
+#nvim --headless +PlugInstall +qall
+#nvim --headless +CocInstall coc-pyright coc-tsserver coc-eslint coc-prettier +qall
+#nvim --headless +CocUpdate +qall
 
 #============== END VIM SETUP =======================
 
@@ -43,3 +45,4 @@ $LINK_CMD $CWD/.tmux ~/.tmux
 
 #============== END TMUX SETUP ======================
 
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install

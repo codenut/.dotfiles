@@ -107,10 +107,5 @@ noremap <Leader>sc :setlocal spell<CR>
 noremap <Leader>q :q! <CR>
 noremap <Leader>sq :wq! <CR>
 
-function! RemapBuffNavigation()
-    nunmap <C-h>
-    noremap <C-h> :bprev<CR>
-    noremap <C-l> :bnext<CR>
-endfunction
-
-autocmd BufAdd * call RemapBuffNavigation()
+noremap <C-j> :bprev<CR>
+noremap <C-k> :bnext<CR>
