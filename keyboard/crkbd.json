@@ -33,7 +33,7 @@
       "KC_D",
       "KC_F",
       "KC_G",
-      "KC_LSFT",
+      "KC_TAB",
       "KC_Z",
       "KC_X",
       "KC_C",
@@ -57,7 +57,7 @@
       "KC_K",
       "KC_J",
       "KC_H",
-      "KC_TAB",
+      "KC_RSFT",
       "KC_SLSH",
       "KC_DOT",
       "KC_COMM",
@@ -121,7 +121,7 @@
       "KC_ENT"
     ],
     [
-      "KC_TAB",
+      "KC_TILD",
       "KC_EXLM",
       "KC_AT",
       "KC_HASH",
