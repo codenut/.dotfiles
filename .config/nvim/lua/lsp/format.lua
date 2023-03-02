@@ -21,6 +21,7 @@ require("lspconfig").efm.setup {
             typescript = {prettier},
             typescriptreact = {prettier},
             javascript = {prettier},
+            json = {prettier},
             yaml = {prettier}
         }
     }
