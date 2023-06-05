@@ -110,3 +110,4 @@ noremap <Leader>sq :wq! <CR>
 
 noremap <C-j> :bprev<CR>
 noremap <C-k> :bnext<CR>
+noremap <leader>d oimport pdb; pdb.set_trace()<Esc>

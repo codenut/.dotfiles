@@ -27,8 +27,9 @@ return require('packer').startup(function(use)
     use 'neovim/nvim-lspconfig'
     use 'ms-jpq/coq_nvim'
 
+    use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'}
     use 'kyazdani42/nvim-tree.lua'
-    use 'akinsho/bufferline.nvim'
+
     use 'nvim-lualine/lualine.nvim'
     use 'sheerun/vim-polyglot'
 
