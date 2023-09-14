@@ -77,6 +77,3 @@
 (setq dap-auto-configure-mode t)
 (after! dap-mode
   (require 'dap-cpptools))
-
-(add-hook 'c-mode-hook #'format-all-mode)               ;; enable code formatting on save
-(setq-hook! 'c-mode-hook +format-with-lsp nil)
