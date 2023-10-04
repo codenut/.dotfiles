@@ -22,9 +22,11 @@
 
        :completion
        company           ; the ultimate code completion backend
-       ;;helm              ; the *other* search engine for love and life
+       helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
-       ivy               ; a search engine for love and life
+       (ivy
+        +fuzzy
+        +prescient)      ; a search engine for love and life
        vertico           ; the search engine of the future
 
        :ui
@@ -104,7 +106,7 @@
        ;;prodigy           ; FIXME managing external services & code builders
        rgb               ; creating color strings
        ;;taskrunner        ; taskrunner for all your projects
-       ;;terraform         ; infrastructure as code
+       terraform         ; infrastructure as code
        ;;tmux              ; an API for interacting with tmux
        ;;tree-sitter       ; syntax and parsing, sitting in a tree...
        ;;upload            ; map local to remote projects via ssh/ftp
