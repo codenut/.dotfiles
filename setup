@@ -27,7 +27,9 @@ $LINK_CMD $CWD/.zshrc ~/.zshrc
 
 $LINK_CMD $CWD/.vimrc ~/.vimrc
 $LINK_CMD $CWD/.vim ~/.vim
-$LINK_CMD $CWD/.config/nvim ~/.config/nvim
+
+$LINK_CMD $CWD/.config/nvim/config.lua ~/.config/nvim/config.lua
+$LINK_CMD $CWD/.config/nvim/.modules.lua ~/.config/nvim/.modules.lua
 
 #nvim --headless +PlugInstall +qall
 #nvim --headless +CocInstall coc-pyright coc-tsserver coc-eslint coc-prettier +qall
