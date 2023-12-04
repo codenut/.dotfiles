@@ -53,3 +53,27 @@ alias iclouddrive='/Users/mvalladolid/Library/Mobile Documents/com~apple~CloudDo
  export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+alias "raco fmt"="raco fmt --width 40"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/usr/local/Caskroom/mambaforge/base/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/usr/local/Caskroom/mambaforge/base/etc/profile.d/conda.sh" ]; then
+        . "/usr/local/Caskroom/mambaforge/base/etc/profile.d/conda.sh"
+    else
+        export PATH="/usr/local/Caskroom/mambaforge/base/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+
+if [ -f "/usr/local/Caskroom/mambaforge/base/etc/profile.d/mamba.sh" ]; then
+    . "/usr/local/Caskroom/mambaforge/base/etc/profile.d/mamba.sh"
+fi
+# <<< conda initialize <<<
+
+
+export DYLD_FALLBACK_LIBRARY_PATH=/opt/homebrew/lib
